@@ -4,6 +4,7 @@
         category: 'config',
         defaults: {
             port: { value: 4628, required: true, validate: RED.validators.number() },
+            host: { value: "0.0.0.0", required: false },
             name: { value: "Server" },
             acktimeout: { value: 0 },
             hex: { value: "no" },
@@ -59,6 +60,10 @@
     <div class="form-row">
         <label for="node-config-input-port"> Listen to Port</label>
         <input type="text" id="node-config-input-port" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"> Bind to host</label>
+        <input type="text" id="node-config-input-host" placeholder="0.0.0.0">
     </div>
     <div class="form-row">
         <label for="node-config-input-accountnumber"> SIA Account</label>

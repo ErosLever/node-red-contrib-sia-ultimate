@@ -14,6 +14,7 @@ module.exports = (RED) => {
         RED.nodes.createNode(this, config)
         var node = this
         node.port = config.port || 4628;
+        node.host = config.host || "0.0.0.0";
         node.nodeClients = []; // Stores the registered clients
         node.errorDescription = ""; // Contains the error description in case of connection error.
         node.aes = config.aes === "yes" ? true : false;
@@ -461,7 +462,7 @@ module.exports = (RED) => {
                     // })
                 });
 
-                servertcp.listen(node.port, () => {
+                servertcp.listen(node.port, node.host, () => {
                     try {
                         let text = 'siaendpointConfig: SIA Server listening on IP-Adress (TCP): ' + servertcp.address().address + ':' + servertcp.address().port;
                         RED.log.info(text);
